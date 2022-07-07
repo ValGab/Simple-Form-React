@@ -1,7 +1,4 @@
-import { useState } from "react";
-import Form from "./Form";
-
-const Results = ({ name, email, password }) => {
+const Results = ({ name, email, password, resultsState, setResults }) => {
   return (
     <div className="infos">
       <div className="results">
@@ -9,7 +6,13 @@ const Results = ({ name, email, password }) => {
         <p>Email : {email}</p>
         <p>Password : {password}</p>
       </div>
-      <button onClick={() => {}}>Edit your information</button>
+      <button
+        onClick={() => {
+          setResults(false);
+        }}
+      >
+        Edit your information
+      </button>
     </div>
   );
 };

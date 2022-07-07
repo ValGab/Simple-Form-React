@@ -6,7 +6,6 @@ const Form = () => {
   const [email, setEmail] = useState("");
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
   const [results, setResults] = useState(false);
 
   const handleNameChange = (event) => {
@@ -39,12 +38,15 @@ const Form = () => {
           email={email}
           password={password1}
           resultsState={results}
+          setResults={setResults}
         />
       ) : (
         <form
           onSubmit={(event) => {
             event.preventDefault();
-            if (password1 !== password2) {
+            if (!password1 || !name || !email) {
+              alert("Veuillez renseigner tous les champs");
+            } else if (password1 !== password2) {
               alert("Vos mots de passe ne sont pas identiques");
             } else {
               setResults(true);
@@ -55,14 +57,20 @@ const Form = () => {
             type="text"
             placeholder="Jean Dupont"
             onChange={handleNameChange}
+            value={name}
           />
           <input
             type="email"
             placeholder="jeandupont@lereacteur.io"
             onChange={handleEmailChange}
+            value={email}
           />
           {password1 === password2 ? (
-            <input type="password" onChange={handlePassword1Change} />
+            <input
+              type="password"
+              onChange={handlePassword1Change}
+              value={password1}
+            />
           ) : (
             <input
               className="red"
@@ -71,7 +79,11 @@ const Form = () => {
             />
           )}
           {password1 === password2 ? (
-            <input type="password" onChange={handlePassword2Change} />
+            <input
+              type="password"
+              onChange={handlePassword2Change}
+              value={password2}
+            />
           ) : (
             <input
               className="red"
