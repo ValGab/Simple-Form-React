@@ -53,18 +53,21 @@ const Form = () => {
             }
           }}
         >
+          <p>Name</p>
           <input
             type="text"
             placeholder="Jean Dupont"
             onChange={handleNameChange}
             value={name}
           />
+          <p>Email</p>
           <input
             type="email"
             placeholder="jeandupont@lereacteur.io"
             onChange={handleEmailChange}
             value={email}
           />
+          <p>Password</p>
           {password1 === password2 ? (
             <input
               type="password"
@@ -78,6 +81,7 @@ const Form = () => {
               onChange={handlePassword1Change}
             />
           )}
+          <p>Confirm your password</p>
           {password1 === password2 ? (
             <input
               type="password"
